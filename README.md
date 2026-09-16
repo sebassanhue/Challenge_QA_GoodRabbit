@@ -31,6 +31,8 @@ npm install
 # Ejecuta la prueba de login en modo visible (headed)
 npx playwright test tests/login.spec.ts --headed
 
+---
+
 ## 📊 Resumen de Hallazgos y Entregables
 
 * **Casos de Prueba (BDD):** Escenarios detallados cubriendo caminos felices y de borde en el sistema de recursos humanos.
