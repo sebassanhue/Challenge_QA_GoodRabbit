@@ -1,4 +1,4 @@
-# 🧪 GoodRabbit QA Challenge - Portafolio Profesional
+# 🧪 GoodRabbit QA Challenge
 
 Repositorio oficial que contiene la solución completa para el challenge técnico de control de calidad (QA Manual, API, Bug Report y Automatización UI) para el sistema **Timekeeper de GoodRabbit**.
 
