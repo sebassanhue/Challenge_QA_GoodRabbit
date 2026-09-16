@@ -9,7 +9,15 @@ Repositorio oficial que contiene la solución completa para el challenge técnic
 *   **`api/`**: Contiene la colección de Postman exportada (`.json`) con el flujo E2E completo y aserciones automatizadas de tiempo y estado.
 *   **`documentacion/`**: Incluye los casos de prueba en formato Gherkin (BDD) y el reporte formal del bug crítico en formato Word y PDF con evidencia técnica de red.
 *   **`tests/`**: Proyecto de automatización UI desarrollado con **Playwright y TypeScript** optimizado para pruebas en Chromium.
+  
+---
 
+## 📊 Resumen de Hallazgos y Entregables
+
+* **Casos de Prueba (BDD):** Escenarios detallados cubriendo caminos felices y de borde en el sistema de recursos humanos.
+* **Bug Report Crítico:** Detección y aislamiento de un problema de latencia severa en el backend (**TTFB > 13s** en el endpoint de autenticación), respaldado por el desglose de red de Postman.
+* **QA Automation:** Script robusto en Playwright con manejo de tiempos de espera adaptados para validar de forma autónoma el ingreso al panel principal.
+  
 ---
 
 ## 🚀 Guía rápida de ejecución
@@ -30,14 +38,6 @@ npm install
 
 # Ejecuta la prueba de login en modo visible (headed)
 npx playwright test tests/login.spec.ts --headed
-
----
-
-## 📊 Resumen de Hallazgos y Entregables
-
-* **Casos de Prueba (BDD):** Escenarios detallados cubriendo caminos felices y de borde en el sistema de recursos humanos.
-* **Bug Report Crítico:** Detección y aislamiento de un problema de latencia severa en el backend (**TTFB > 13s** en el endpoint de autenticación), respaldado por el desglose de red de Postman.
-* **QA Automation:** Script robusto en Playwright con manejo de tiempos de espera adaptados para validar de forma autónoma el ingreso al panel principal.
 
 ---
 *Desarrollado por Sebastián Sanhueza - QA Engineer*
