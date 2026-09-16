@@ -32,6 +32,7 @@ npm install
 npx playwright test tests/login.spec.ts --headed
 
 ## 📊 Resumen de Hallazgos y Entregables
+
 * **Casos de Prueba (BDD):** Escenarios detallados cubriendo caminos felices y de borde en el sistema de recursos humanos.
 * **Bug Report Crítico:** Detección y aislamiento de un problema de latencia severa en el backend (**TTFB > 13s** en el endpoint de autenticación), respaldado por el desglose de red de Postman.
 * **QA Automation:** Script robusto en Playwright con manejo de tiempos de espera adaptados para validar de forma autónoma el ingreso al panel principal.
