@@ -47,5 +47,4 @@ npm install
 # Ejecuta la prueba de login en modo visible (headed)
 npx playwright test tests/login.spec.ts --headed
 
----
-*Desarrollado por Sebastián Sanhueza - QA Engineer*
+
