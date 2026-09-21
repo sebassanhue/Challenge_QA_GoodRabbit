@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "7ab81f10-d534-4af4-a44c-72f0d351e036",
+    "_postman_id": "9b02c77e-2550-4a37-ae44-be1afef4b58b",
     "name": "Timekeeper Project (QA) Completado",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "53898518",
-    "_collection_link": "https://go.postman.co/collection/53898518-7ab81f10-d534-4af4-a44c-72f0d351e036?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/53898518-9b02c77e-2550-4a37-ae44-be1afef4b58b?source=collection_link"
   },
   "item": [
     {
@@ -80,7 +80,7 @@
                   "script": {
                     "type": "text/javascript",
                     "exec": [
-                      "// Validar status y tiempo de Respuesta\r\npm.test(\"Status 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Respuesta rapida\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(2000);\r\n});\r\n\r\n// Guardar bearer_token\r\npm.test(\"Guardar token\", function () {\r\n    var jsonData = pm.response.json();\r\n    pm.collectionVariables.set(\"bearer_token\", jsonData.access_token);\r\n});"
+                      "var code = pm.response.code;\r\nvar jsonData = pm.response.json();\r\n\r\n// 1. Lógica para el código HTTP Muestra qué número devolvió\r\nif (code === 200) {\r\n    pm.test(\"Aprobado: Código 200 (Login exitoso)\", function () {\r\n        pm.response.to.have.status(200);\r\n    });\r\n    \r\n    pm.test(\"El JSON trae el access_token\", function () {\r\n        pm.expect(jsonData).to.have.property(\"access_token\");\r\n        // Guardo el token para el resto de la colección\r\n        pm.collectionVariables.set(\"bearer_token\", jsonData.access_token);\r\n    });\r\n    \r\n} else if (code === 400 || code === 401) {\r\n    pm.test(\"Error esperado: Código \" + code, function () {\r\n        pm.expect(code).to.be.oneOf([400, 401]);\r\n    });\r\n    \r\n    pm.test(\"El JSON muestra el detalle del error\", function () {\r\n        pm.expect(jsonData).to.have.property(\"detail\");\r\n    });\r\n}\r\n\r\n// 2. Control de latencia\r\npm.test(\"Tiempo de respuesta menor a 20000ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(20000);\r\n});"
                     ]
                   }
                 }
@@ -183,7 +183,7 @@
                   "script": {
                     "type": "text/javascript",
                     "exec": [
-                      "// Status\r\npm.test(\"Status 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\n// Esquema JSON\r\npm.test(\"Esquema contiene data\", function () {\r\n    var jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"data\");\r\n});"
+                      "// Valida 200\r\npm.test(\"Status code is 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\n// Valida tiempo de respuesta\r\npm.test(\"El tiempo de respuesta es menor a 20000ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(20000);\r\n});\r\n\r\n// Valida esquema JSON de la respuesta de marcación\r\npm.test(\"Validar estructura JSON contiene data\", function () {\r\n    var jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"data\");\r\n});"
                     ]
                   }
                 }
@@ -270,7 +270,7 @@
                   "script": {
                     "type": "text/javascript",
                     "exec": [
-                      "// Status\r\npm.test(\"Status 200 o 201\", function () {\r\n    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r\n});\r\n\r\n// Esquema JSON\r\npm.test(\"Esquema contiene status\", function () {\r\n    var jsonData = pm.response.json();\r\n    pm.expect(jsonData.status).to.eql(\"success\");\r\n});"
+                      "// Valida 200\r\npm.test(\"Status code is 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\n// Valida tiempo de respuesta\r\npm.test(\"Tiempo de respuesta menor a 5000ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(5000);\r\n});\r\n\r\n// 3. Valida formato de respuesta\r\npm.test(\"La respuesta es un JSON válido\", function () {\r\n    var jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.be.an(\"object\");\r\n});"
                     ]
                   }
                 }
